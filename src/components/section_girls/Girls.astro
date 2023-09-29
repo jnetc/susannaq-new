@@ -11,7 +11,7 @@ interface Props {
 const { description, title, girls } = Astro.props.data;
 ---
 
-<section class="grid column2-2 section-padding">
+<section id="girls" class="grid column2-2 section-padding">
   <Title data={title} />
   <Description data={description} />
   {girls.map((girl, idx) => <Girl data={girl} index={idx} />)}
