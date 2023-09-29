@@ -8,13 +8,13 @@ import SectionServices from "@Components/section_services/Services.astro";
 import SectionGirls from "@Components/section_girls/Girls.astro";
 import SectionShop from "@Components/section_shop/Shop.astro";
 
-// import FetchFromDatoCMS from "@Lib/datocms.ts";
-// const data = await FetchFromDatoCMS();
+import FetchFromDatoCMS from "@Lib/datocms.ts";
+const data = await FetchFromDatoCMS();
 
 // LOCAL DATA!!!
 // Remove CACHE folder to get updated data!!!
-import LocaleData from "@Lib/localdata";
-const data = await LocaleData();
+// import LocaleData from "@Lib/localdata";
+// const data = await LocaleData();
 ---
 
 <Layout data={data._site}>
