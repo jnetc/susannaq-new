@@ -1,0 +1,56 @@
+---
+import Title from "@Components/title/index.astro";
+import Description from "@Components/description/index.astro";
+
+import type { IShop } from "@Types";
+interface Props {
+  data: IShop;
+}
+
+const { description, title, image } = Astro.props.data;
+---
+
+<section class="grid column2-2 shop">
+  <Title data={title} />
+  <Description data={description} />
+  <div class="shop__images">
+    {
+      image.map((img) => (
+        <img
+          class="shop__image"
+          src={img.responsiveImage.src}
+          alt={img.responsiveImage.alt}
+          width={img.responsiveImage.width}
+          height={img.responsiveImage.height}
+          aria-label={img.responsiveImage.alt}
+          title={img.responsiveImage.alt}
+          srcset={img.responsiveImage.srcSet}
+          sizes={img.responsiveImage.sizes}
+        />
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .shop__images {
+    grid-column: 1 / -1;
+    margin-inline: auto;
+    max-width: 1260px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap-36);
+    justify-content: center;
+  }
+  .shop__image {
+    display: flex;
+    align-self: baseline;
+    grid-column: 1;
+    grid-row: 1;
+
+    max-height: 309px;
+    aspect-ratio: 1 / 1.03;
+    object-fit: cover;
+    clip-path: url(#clipping);
+  }
+</style>

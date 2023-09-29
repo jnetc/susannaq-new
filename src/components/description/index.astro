@@ -1,0 +1,42 @@
+---
+import { marked } from "marked";
+
+interface Props {
+  data: string;
+}
+
+const { data } = Astro.props;
+const content = marked.parse(data);
+---
+
+<div class="description" set:html={content} />
+
+<style>
+  .description {
+    grid-column: 4 / -5;
+    /* grid-row: 2; */
+    block-size: min-content;
+    display: grid;
+    row-gap: var(--gap-16);
+    padding-block: var(--gap-48) var(--gap-96);
+    color: var(--color-grey-200);
+    font-size: clamp(var(--font-18), 1.7vw, var(--font-24));
+    line-height: 1.4;
+  }
+
+  /* MEDIA QUERIES */
+  @media (max-width: 960px) {
+    .description {
+      grid-column: 2 / -2;
+      font-size: clamp(var(--font-18), 3.5vw, var(--font-24));
+      line-height: 1.5;
+    }
+  }
+  @media (max-width: 559px) {
+    .description {
+      grid-column: 1 / -1;
+      font-size: clamp(var(--font-18), 3.5vw, var(--font-24));
+      line-height: 1.5;
+    }
+  }
+</style>

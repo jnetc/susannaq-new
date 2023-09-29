@@ -1,0 +1,28 @@
+---
+import type { IPrice } from "@Types";
+interface Props {
+  data: IPrice;
+}
+const { time, price } = Astro.props.data;
+---
+
+<div class="service__time-price">
+  <span class="price">{time}</span>
+  {price ? <span class="time">{price} euro</span> : null}
+</div>
+
+<style>
+  .service__time-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--gap-8);
+    color: var(--color-grey-100);
+    font-size: clamp(var(--font-20), 2.5vw, var(--font-32));
+  }
+  @media (max-width: 960px) {
+    .service__time-price {
+      font-size: clamp(var(--font-20), 4vw, var(--font-32));
+    }
+  }
+</style>

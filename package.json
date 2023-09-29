@@ -1,5 +1,5 @@
 {
-  "name": "hilarious-heliosphere",
+  "name": "susannaq",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -10,6 +10,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^3.1.2"
+    "@astrojs/netlify": "^3.0.2",
+    "@astrojs/sitemap": "^3.0.0",
+    "astro": "^3.1.2",
+    "marked": "^9.0.3"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.3",
+    "prettier-plugin-astro": "^0.12.0"
   }
 }

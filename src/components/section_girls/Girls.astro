@@ -1,0 +1,18 @@
+---
+import Title from "@Components/title/index.astro";
+import Description from "@Components/description/index.astro";
+import Girl from "@Components/section_girls/Girl.astro";
+
+import type { IGirls } from "@Types";
+interface Props {
+  data: IGirls;
+}
+
+const { description, title, girls } = Astro.props.data;
+---
+
+<section class="grid column2-2 section-padding">
+  <Title data={title} />
+  <Description data={description} />
+  {girls.map((girl, idx) => <Girl data={girl} index={idx} />)}
+</section>

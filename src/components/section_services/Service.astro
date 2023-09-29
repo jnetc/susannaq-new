@@ -1,0 +1,100 @@
+---
+import { marked } from "marked";
+import Price from "@Components/section_services/Price.astro";
+
+import type { IService } from "@Types";
+interface Props {
+  data: IService;
+}
+
+const { title, description, prices } = Astro.props.data;
+const content = marked.parse(description);
+---
+
+<div class="service">
+  <h3 class="service__title">{title}</h3>
+  <div class="service__prices">
+    {prices.map((price) => <Price data={price} />)}
+  </div>
+  <div class="service__desc" set:html={content} />
+  <!-- Never mind where this mask will be -->
+  <svg viewBox="0 0 283 309" width="0" height="0">
+    <defs>
+      <clipPath id="clipping" clipPathUnits="objectBoundingBox">
+        <path
+          d="M0.078,0.081 c0.095,-0.149,0.767,-0.052,0.843,0.011 c0.075,0.063,0.11,0.808,0.045,0.863 c-0.085,0.072,-0.816,0.067,-0.917,-0.047 C-0.019,0.832,-0.022,0.237,0.078,0.081"
+        ></path>
+      </clipPath>
+    </defs>
+  </svg>
+</div>
+
+<style>
+  .service {
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    position: relative;
+    padding-inline: var(--gap-24);
+    padding-block: var(--gap-56) var(--gap-96);
+    background-color: var(--background);
+    border: 1px solid transparent;
+    transition: all var(--transition-03) ease-in-out;
+  }
+
+  .service:hover {
+    background-color: #2c3039;
+  }
+  .service::after,
+  .service::before {
+    content: "";
+    height: 4px;
+    position: absolute;
+    inset-inline: 50% 0;
+    background-color: var(--color-pink);
+    transition: all var(--transition-03) ease-in-out;
+    z-index: 1;
+  }
+  .service::after {
+    bottom: 0;
+  }
+  .service::before {
+    top: 0px;
+    opacity: 0;
+  }
+  .service:hover::before {
+    opacity: 1;
+    inset-inline: 0 50%;
+  }
+  .service:hover::after {
+    opacity: 0;
+    inset-inline: 0 50%;
+  }
+
+  .service__title {
+    color: var(--color-pink);
+    font-size: clamp(var(--font-24), 3vw, var(--font-36));
+  }
+  .service__prices {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-6);
+    padding-block: clamp(var(--gap-32), 5vw, var(--gap-64)) var(--gap-32);
+  }
+  .service__desc {
+    color: var(--color-grey-200);
+    font-size: clamp(var(--font-16), 1.5vw, var(--font-20));
+    line-height: 1.4;
+  }
+
+  @media (max-width: 960px) {
+    .service__title {
+      font-size: clamp(var(--font-24), 5vw, var(--font-36));
+    }
+    .service__desc {
+      font-size: clamp(var(--font-16), 2.8vw, var(--font-20));
+    }
+  }
+
+  @media (max-width: 559px) {
+  }
+</style>

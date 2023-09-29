@@ -1,0 +1,40 @@
+---
+import Logo from "@SVG/Logo.astro";
+---
+
+<header class="grid column2-2">
+  <nav class="navigation">
+    <a class="nav-link" href="/">Etusivu</a>
+    <a class="nav-link" href="/services">Palvelut</a>
+    <a
+      href="/"
+      title="SusannaQ private show"
+      aria-label="SusannaQ private show"
+    >
+      <Logo />
+    </a>
+    <a class="nav-link" href="/girls">Esiintyjät</a>
+    <a class="nav-link" href="/shop">Seksikauppa</a>
+  </nav>
+</header>
+
+<style>
+  .navigation {
+    grid-column: 2 / -2;
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    gap: var(--gap-24);
+    padding-block: var(--gap-12);
+  }
+  .nav-link {
+    font-size: var(--font-16);
+    color: var(--color-grey-200);
+  }
+
+  @media (max-width: 660px) {
+    .nav-link {
+      display: none;
+    }
+  }
+</style>

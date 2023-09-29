@@ -1,0 +1,37 @@
+---
+import Title from "@Components/title/index.astro";
+import Description from "@Components/description/index.astro";
+import Service from "@Components/section_services/Service.astro";
+
+import type { IServices } from "@Types";
+interface Props {
+  data: IServices;
+}
+
+const { description, title, services } = Astro.props.data;
+---
+
+<section class="grid column2-2 section-padding">
+  <Title data={title} />
+  <Description data={description} />
+  <div class="services">
+    {services.map((service) => <Service data={service} />)}
+  </div>
+</section>
+
+<style>
+  .services {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--gap-56);
+  }
+  @media (max-width: 960px) {
+    .services {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--gap-56);
+    }
+  }
+</style>

@@ -1,0 +1,122 @@
+---
+import LocationIcon from "@SVG/LocationIcon.astro";
+import HeroTitle from "@SVG/HeroTitle.astro";
+import HeroIllustration from "@SVG/HeroIllustration.astro";
+
+import type { IHero } from "@Types";
+interface Props {
+  data: IHero;
+}
+
+const { title, url } = Astro.props.data;
+---
+
+<section class="grid column2-2 hero">
+  <HeroTitle />
+  <h1 class="hero__title">
+    {title}
+  </h1>
+
+  <div class="hero_buttons">
+    <a class="hero__button" href="/girls">esiintyjät</a>
+    <p class="hero__link">
+      <span class="hero__extra">Olemme</span>
+      <a class="hero__href" href={url} target="_blank">Tässä <LocationIcon /></a
+      >
+    </p>
+  </div>
+  <HeroIllustration />
+</section>
+
+<style>
+  .hero {
+    height: max(950px, calc(100dvh - 54px));
+    align-items: center;
+    align-content: center;
+    position: relative;
+    /* overflow: hidden; */
+  }
+  :global(.hero__title, .hero_buttons, .hero__title-svg) {
+    grid-column: 1 / 6 span;
+  }
+
+  .hero__title {
+    max-width: 550px;
+    padding-block: var(--gap-24) var(--gap-56);
+    color: var(--color-grey-200);
+    font-size: clamp(var(--font-18), 1.5vw, var(--font-24));
+    font-weight: 400;
+    line-height: 1.4;
+  }
+  .hero_buttons {
+    display: flex;
+    gap: var(--gap-48);
+  }
+
+  .hero__button {
+    padding-block: var(--gap-16);
+    padding-inline: clamp(var(--gap-24), 1.5vw, var(--gap-32));
+    border: 3px solid var(--color-pink);
+    border-radius: var(--border-corner-8);
+    color: var(--color-white);
+    font-size: clamp(var(--font-16), 1.5vw, var(--font-24));
+    text-transform: uppercase;
+    transition: all var(--transition-03);
+  }
+  .hero__link {
+    display: flex;
+    gap: var(--gap-8);
+    align-items: center;
+    color: var(--color-grey-300);
+    font-size: clamp(var(--font-16), 1.5vw, var(--font-24));
+  }
+  .hero__href {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-4);
+    color: var(--color-pink);
+    font-weight: bold;
+    position: relative;
+  }
+  .hero__href::after {
+    content: "";
+    position: absolute;
+    height: 3px;
+    inset-inline: 0;
+    inset-block-end: -0.375rem;
+    background-color: var(--color-pink);
+    border-radius: 10px;
+    transition: all var(--transition-03);
+    pointer-events: none;
+  }
+
+  .hero__href:hover::after {
+    inset-inline: 75% 0;
+  }
+
+  @media (max-width: 960px) {
+    .hero {
+      height: 100%;
+      align-content: center;
+      justify-items: center;
+      padding-block-end: var(--gap-224);
+    }
+    :global(.hero__title, .hero_buttons, .hero__title-svg) {
+      grid-column: 1 / -1;
+    }
+    .hero__title {
+      font-size: clamp(var(--font-18), 4.5vw, var(--font-24));
+    }
+    .hero_buttons {
+      gap: var(--gap-32);
+    }
+    .hero__button {
+      padding-inline: clamp(var(--gap-24), 4.5vw, var(--gap-32));
+
+      font-size: clamp(var(--font-16), 4.5vw, var(--font-24));
+    }
+    .hero__link {
+      font-size: clamp(var(--font-16), 4.5vw, var(--font-24));
+    }
+  }
+</style>

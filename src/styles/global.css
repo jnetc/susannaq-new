@@ -1,0 +1,168 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  /* border: 1px solid red; */
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth !important;
+  }
+}
+
+html {
+  background-color: var(--background);
+  scrollbar-gutter: stable;
+  overflow-x: hidden;
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+body {
+  margin-inline: auto;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+picture,
+img,
+svg {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+a {
+  text-decoration: none;
+  line-height: 1;
+}
+
+ul {
+  list-style-type: none;
+}
+
+p,
+input,
+textarea {
+  font-weight: 400;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+button,
+strong,
+span,
+label,
+input,
+footer,
+textarea {
+  font-family: "Inter", sans-serif;
+}
+
+main {
+  display: grid;
+  /* row-gap: var(--gap-208); */
+}
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* GRIDS */
+.grid-outside,
+.grid {
+  --grid: repeat(12, minmax(0, 6rem));
+  display: grid;
+  column-gap: var(--gap-36);
+  position: relative;
+}
+.grid-outside {
+  grid-template-columns: 1fr var(--grid) 1fr;
+}
+.grid {
+  grid-template-columns: var(--grid);
+}
+
+/* CLASSES */
+.column2-2 {
+  grid-column: 2 / -2;
+}
+.gap-32 {
+  gap: var(--gap-32);
+}
+
+.overflow {
+  overflow: hidden;
+}
+.section-padding {
+  padding-block-end: var(--gap-224);
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 960px) {
+  :root {
+    --body-padding: 1rem;
+  }
+
+  .grid-outside,
+  .grid {
+    --grid: repeat(6, minmax(0, 1fr));
+    column-gap: var(--gap-16);
+  }
+  .grid-outside {
+    grid-template-columns: var(--gap-16) var(--grid) var(--gap-16);
+  }
+  .grid {
+    grid-template-columns: var(--grid);
+  }
+}
+
+/* GLOBAL ANIMATION */
+.illuminate {
+  animation: illuminate 3s ease-in-out infinite;
+}
+
+@keyframes illuminate {
+  50% {
+    opacity: 1;
+  }
+  52% {
+    opacity: 0;
+  }
+  54% {
+    opacity: 1;
+  }
+  56% {
+    opacity: 0;
+  }
+  58% {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,31 @@
+---
+interface Props {
+  data: string;
+}
+const { data } = Astro.props;
+---
+
+<h2 class="title title-center">{data}</h2>
+
+<style>
+  .title {
+    grid-column: 4 / -3;
+    color: var(--color-grey-100);
+    font-size: clamp(var(--font-32), 5vw, var(--font-48));
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  /* MEDIA QUERIES */
+  @media (max-width: 960px) {
+    .title {
+      grid-column: 2 / -2;
+    }
+  }
+
+  @media (max-width: 559px) {
+    .title {
+      grid-column: 1 / -1;
+    }
+  }
+</style>
