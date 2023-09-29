@@ -13,12 +13,5 @@ export default defineConfig({
   compressHTML: true,
   build: {
     inlineStylesheets: `always`,
-  },
-  integrations: [
-    sitemap({
-      changefreq: "monthly",
-      priority: 0.9,
-      lastmod: new Date().toISOString(),
-    }),
-  ],
+  }
 });
