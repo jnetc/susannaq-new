@@ -31,24 +31,27 @@ const { title, url } = Astro.props.data;
 <style>
   .hero {
     height: max(950px, calc(100dvh - 54px));
+    grid-template-rows: auto auto auto auto auto;
     align-items: center;
     align-content: center;
     position: relative;
-    /* overflow: hidden; */
+
   }
   :global(.hero__title, .hero_buttons, .hero__title-svg) {
     grid-column: 1 / 6 span;
   }
 
   .hero__title {
+    grid-row: 3;
     max-width: 550px;
     padding-block: var(--gap-24) var(--gap-56);
     color: var(--color-grey-200);
-    font-size: clamp(var(--font-18), 1.5vw, var(--font-24));
+    font-size: clamp(var(--font-20), 1.5vw, var(--font-24));
     font-weight: 400;
     line-height: 1.4;
   }
   .hero_buttons {
+    grid-row: 4;
     display: flex;
     gap: var(--gap-48);
   }

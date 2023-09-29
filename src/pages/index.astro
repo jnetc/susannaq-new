@@ -8,8 +8,6 @@ import SectionServices from "@Components/section_services/Services.astro";
 import SectionGirls from "@Components/section_girls/Girls.astro";
 import SectionShop from "@Components/section_shop/Shop.astro";
 
-// import { getLangFromUrl } from "@Utils/defaultLang.ts";
-
 import FetchFromDatoCMS from "@Lib/datocms.ts";
 const data = await FetchFromDatoCMS();
 
@@ -19,7 +17,7 @@ const data = await FetchFromDatoCMS();
 // const data = await LocaleData();
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout data={data._site}>
   <UIShape />
   <Header />
   <main class="main">
@@ -36,6 +34,5 @@ const data = await FetchFromDatoCMS();
     display: flex;
     flex-direction: column;
     grid-column: 2 / -2;
-    /* row-gap: var(--gap-240); */
   }
 </style>

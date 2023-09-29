@@ -3,22 +3,60 @@ import "@Styles/variable.css";
 import "@Styles/fonts.css";
 import "@Styles/global.css";
 
+import type { ISEO } from "@Types";
+
 interface Props {
-  title: string;
+  data: ISEO;
 }
 
-const { title } = Astro.props;
+// Example: Construct a canonical URL using your production domain
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const { globalSeo } = Astro.props.data;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  title: globalSeo.fallbackSeo.title,
+  description: globalSeo.fallbackSeo.description,
+  url: "https://www.susannaq.fi",
+  image: globalSeo.fallbackSeo.image.url,
+};
 ---
 
 <!doctype html>
 <html lang="fi">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
+
+    <meta name="googlebot" content="index, follow" />
+    <meta name="robots" content="index, follow" />
+
+    <title>{globalSeo.fallbackSeo.title}</title>
+    <meta name="description" content={globalSeo.fallbackSeo.description} />
+    <meta
+      name="keywords"
+      content="private show, girls, sexshop, laadukkaat seksilelut, seksuaaliterveyden tuotteet, eroottiset alusvaatteet, intohimo, ilo, fantasiat, yksityisyys, mukavuus, aktiivinen elämäntapa, viettely, tanssijat, intiimi ilmapiiri, juhlan ilmapiiri, Helsinki, SusannaQ, striptease, tanssit, viettelevä, nuoret taiteilijat, erityishuoneet, vapaa-aika, erilaiset toiveet, turvallisuus, laatu, intiimi tunnelma, erikoistunut palvelu, unohtumattomat kokemukset"
+    />
+
+    <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta property="og:title" content={globalSeo.fallbackSeo.title} />
+    <meta
+      property="og:description"
+      content={globalSeo.fallbackSeo.description}
+    />
+    <meta property="og:image" content={globalSeo.fallbackSeo.image.url} />
+    <meta property="og:url" content="https://www.susannaq.fi" />
+
+    <meta name="geo.region" content="FI" />
+    <meta http-equiv="content-language" content="fi" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <meta name="rating" content="General" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   </head>
   <body class="grid-outside">
     <slot />

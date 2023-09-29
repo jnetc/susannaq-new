@@ -25,7 +25,7 @@ export interface INavigation {
   links: Array<ILinks>;
 }
 
-interface ISEO {
+export interface ISEO {
   globalSeo: {
     fallbackSeo: IArticle & { image: UrlType };
   };
