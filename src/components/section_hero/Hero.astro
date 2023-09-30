@@ -18,7 +18,7 @@ const { title, url } = Astro.props.data;
   </h1>
 
   <div class="hero_buttons">
-    <a class="hero__button" href="/girls">esiintyjät</a>
+    <a class="hero__button" href="#girls">esiintyjät</a>
     <p class="hero__link">
       <span class="hero__extra">Olemme</span>
       <a class="hero__href" href={url} target="_blank">Tässä <LocationIcon /></a
@@ -35,7 +35,6 @@ const { title, url } = Astro.props.data;
     align-items: center;
     align-content: center;
     position: relative;
-
   }
   :global(.hero__title, .hero_buttons, .hero__title-svg) {
     grid-column: 1 / 6 span;
